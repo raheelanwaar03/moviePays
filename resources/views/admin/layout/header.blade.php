@@ -68,6 +68,7 @@
                 </a>
                 <ul>
                     <li><a href="{{ route('Admin.All.Users') }}">All Users</a></li>
+                    <li><a href="{{ route('Admin.Today.Accounts') }}">Today Users</a></li>
                     <li><a href="{{ route('Admin.Pending.Users') }}">Pending Users</a></li>
                     <li><a href="{{ route('Admin.Approved.Users') }}">Approved Users</a></li>
                     <li><a href="{{ route('Admin.Rejected.Users') }}">Rejected Users</a></li>

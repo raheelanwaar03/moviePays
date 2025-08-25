@@ -21,6 +21,7 @@ Route::prefix('Admin')->name('Admin.')->middleware('auth', 'admin')->group(funct
     Route::get('/Easypaisa/Users', [AdminDashboardController::class, 'easypaisaUsers'])->name('Easypaisa.Users');
     Route::get('/Set/Users/Level', [AdminDashboardController::class, 'setLevel'])->name('Set.User.Level');
     Route::get('/Vistors', [AdminDashboardController::class, 'vistors'])->name('Vistors');
+    Route::get('/Today/Accounts', [AdminDashboardController::class, 'todayUser'])->name('Today.Accounts');
     // routes for approving user account
     Route::get('Approve/User/Account/{id}', [AdminDashboardController::class, 'approveUserAccount'])->name('Approve.User.Account.Request');
     Route::get('Reject/User/Account/{id}', [AdminDashboardController::class, 'rejectUserAccount'])->name('Rejected.User.Account.Request');

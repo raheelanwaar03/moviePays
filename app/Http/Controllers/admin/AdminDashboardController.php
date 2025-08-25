@@ -553,6 +553,12 @@ class AdminDashboardController extends Controller
         return view('admin.dashboard.todayUser', compact('users'));
     }
 
+    public function todayUser()
+    {
+        $users = User::where('status', 'pending')->whereDate('created_at', now()->today())->get();
+        return view('admin.dashboard.todayPendingUser', compact('users'));
+    }
+
     public function vistors()
     {
         $vistors = Vistor::get();
