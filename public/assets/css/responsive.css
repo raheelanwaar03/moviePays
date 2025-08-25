@@ -1,0 +1,27 @@
+.custom-btn{
+    color: white;
+    border-radius: 18px;
+    background-color: rgb(255, 0, 0);
+    padding: 15px 25px;
+    border: 1px solid white;
+}
+
+.custom-btn:hover{
+    color: white;
+    background-color: rgb(231, 48, 48);
+}
+
+.card_css{
+    color:white;
+}
+
+.card_css:hover{
+    color: white;
+    background-color: rgb(255, 0, 0);
+}
+
+.home_card:hover
+{
+    border-radius: 5px;
+    background-color: rgb(219, 69, 69);
+}
