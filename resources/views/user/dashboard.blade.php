@@ -109,7 +109,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4">
-                    <a href="mailto:test@gmail.com?subject=Mail from our Website" class="text-decoration-none card_css">
+                    <a href="mailto:moviespays1@gmail.com?subject=Mail from our Website" class="text-decoration-none card_css">
                         <div class="card" style="background-color: blue;">
                             <div class="card-body">
                                 <div class="text-center">
