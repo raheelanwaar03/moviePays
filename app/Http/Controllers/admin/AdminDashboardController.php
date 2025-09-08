@@ -39,37 +39,37 @@ class AdminDashboardController extends Controller
 
     public function userTids()
     {
-        $users = User::where('status', 'pending')->with('trxIds')->get();
+        $users = User::where('status', 'pending')->whereHas('trxIds')->get();
         return view('admin.dashboard.userTids', compact('users'));
     }
 
     public function allUsers()
     {
-        $users = User::with('trxIds')->get();
+        $users = User::whereHas('trxIds')->get();
         return view('admin.dashboard.allUsers', compact('users'));
     }
 
     public function pendingUsers()
     {
-        $users = User::where('status', 'pending')->with('trxIds')->get();
+        $users = User::where('status', 'pending')->whereHas('trxIds')->get();
         return view('admin.dashboard.pendingUser', compact('users'));
     }
 
     public function approvedUsers()
     {
-        $users = User::where('status', 'approved')->with('trxIds')->get();
+        $users = User::where('status', 'approved')->whereHas('trxIds')->get();
         return view('admin.dashboard.approvedUsers', compact('users'));
     }
 
     public function rejectedUsers()
     {
-        $users = User::where('status', 'rejected')->with('trxIds')->get();
+        $users = User::where('status', 'rejected')->whereHas('trxIds')->get();
         return view('admin.dashboard.rejectedUser', compact('users'));
     }
 
     public function easypaisaUsers()
     {
-        $users = User::with('trxIds')->get();
+        $users = User::whereHas('trxIds')->get();
         return view('admin.dashboard.easypaisUser', compact('users'));
     }
 
