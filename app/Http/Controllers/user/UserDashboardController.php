@@ -27,9 +27,9 @@ class UserDashboardController extends Controller
     public function widthrawReq()
     {
         $widthraws = WidthrawBalance::where('user_id', auth()->user()->id)->get();
-        $user = User::where('id',auth()->user()->id)->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->firstOrFail();
         $balance = number_format($user->balance, 3);
-        return view('user.work.widthrawReq', compact('widthraws','balance'));
+        return view('user.work.widthrawReq', compact('widthraws', 'balance'));
     }
 
     public function work($id)
@@ -43,6 +43,20 @@ class UserDashboardController extends Controller
 
     public function taskText(Request $request, $id)
     {
+
+        // check if user have join any user in 10 days or not.
+        $user = auth()->user();
+        // Check the latest user they referred
+        $lastReferral = User::where('referral', $user->email)->latest('created_at')->first();
+        if ($lastReferral != null) {
+            // Check how many days since the last referral
+            $daysSinceLastReferral = $lastReferral->created_at->diffInDays(Carbon::now());
+            if ($daysSinceLastReferral >= 10) {
+                return redirect()->back()->with('error', 'you have not join any user from last 10 days');
+            }
+        }
+
+
         $product = AdminProductModel::find($id);
         $productRewarad = $product->product_price;
         // checking user
@@ -77,7 +91,4 @@ class UserDashboardController extends Controller
     {
         return view('user.social.rule');
     }
-
-
-
 }
