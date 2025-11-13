@@ -47,7 +47,7 @@ class UserDashboardController extends Controller
         // check if user have join any user in 10 days or not.
         $user = auth()->user();
         // Check the latest user they referred
-        $lastReferral = User::where('referral', $user->email)->latest('created_at')->first();
+        $lastReferral = User::where('referal', $user->email)->latest('created_at')->first();
         if ($lastReferral != null) {
             // Check how many days since the last referral
             $daysSinceLastReferral = $lastReferral->created_at->diffInDays(Carbon::now());
