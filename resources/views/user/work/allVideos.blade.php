@@ -31,6 +31,48 @@
             cursor: pointer;
             color: white;
         }
+
+        .video-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.video-player {
+    display: none;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    font-size: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.star {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
     </style>
 
 </head>
@@ -58,35 +100,40 @@
         <div class="row m-3">
             @forelse ($allVideos as $video)
                 <div class="col-md-4 mb-3">
-                    <div class="card" style="width: 18rem;background-color: blue;">
-                        <video controls autoplay="false">
-                            <source src="{{ asset('video/' . $video->link) }}" type="video/mp4">
-                        </video>
-                        <div class="card-body">
-                          <h5 class="card-title text-white">Watch and earn</h5>
-                          <p class="card-text text-white">{{ $video->text }}</p>
-                          <div class="star" onclick="toggleStar(this)">★</div>
-                          <div class="star" onclick="toggleStar(this)">★</div>
-                          <div class="star" onclick="toggleStar(this)">★</div>
-                          <div class="star" onclick="toggleStar(this)">★</div>
-                          <div class="star" onclick="toggleStar(this)">★</div>
+    <div class="card video-card" style="width: 18rem; background-color: blue;">
 
-                          <script>
-                            function toggleStar(star) {
-                                if (star.style.color === 'white') {
-                                    star.style.color = 'gold';
-                                } else {
-                                    star.style.color = 'white';
-                                }
-                            }
-                        </script>
-                          <div class="d-flex justify-content-around align-items-center">
-                              <a href="{{ route('User.Type.Task', ['id' => $video->id]) }}" class="btn btn-primary">Submit</a>
-                              <button id="shareButton" class="btn btn-sm btn-info text-white">Share Now</button>
-                          </div>
-                        </div>
-                      </div>
-                </div>
+        <div class="video-wrapper" onclick="toggleVideo(this)">
+            <img class="video-thumbnail"
+                 src="{{ asset('assets/img/video.png') }}"
+                 alt="Video Thumbnail">
+
+            <div class="play-icon">▶</div>
+
+            <video class="video-player">
+                <source src="{{ asset('video/' . $video->link) }}" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title text-white">Watch&Get</h5>
+            <p class="card-text text-white">{{ $video->text }}</p>
+
+            <div>
+                <span class="star" onclick="toggleStar(this)">★</span>
+                <span class="star" onclick="toggleStar(this)">★</span>
+                <span class="star" onclick="toggleStar(this)">★</span>
+                <span class="star" onclick="toggleStar(this)">★</span>
+                <span class="star" onclick="toggleStar(this)">★</span>
+            </div>
+
+            <div class="d-flex justify-content-around align-items-center mt-2">
+                <a href="{{ route('User.Type.Task', ['id' => $video->id]) }}" class="btn btn-primary">Submit</a>
+                <button class="btn btn-sm btn-info text-white">Share Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
                 <script>
                    // Check if Web Share API is supported
@@ -149,6 +196,31 @@ function shareVideo() {
     <div class="row m-3">
     </div>
     </div>
+
+    <script>
+        function toggleVideo(wrapper) {
+            const video = wrapper.querySelector('.video-player');
+            const thumbnail = wrapper.querySelector('.video-thumbnail');
+            const playIcon = wrapper.querySelector('.play-icon');
+
+            if (video.paused) {
+                video.style.display = 'block';
+                thumbnail.style.display = 'none';
+                playIcon.style.display = 'none';
+                video.play();
+            } else {
+                video.pause();
+                video.style.display = 'none';
+                thumbnail.style.display = 'block';
+                playIcon.style.display = 'flex';
+            }
+        }
+
+        function toggleStar(star) {
+            star.style.color = (star.style.color === 'gold') ? 'white' : 'gold';
+        }
+    </script>
+
     </body>
 
 </html>
