@@ -104,7 +104,7 @@
 
         <div class="video-wrapper" onclick="toggleVideo(this)">
             <img class="video-thumbnail"
-                 src="{{ asset('assets/img/video.png') }}"
+                 src="{{ asset('assets/chocolate.jpeg') }}"
                  alt="Video Thumbnail">
 
             <div class="play-icon">▶</div>
