@@ -13,6 +13,9 @@ class landingPageController extends Controller
 {
     public function home()
     {
+        if (auth()->user()) {
+            return redirect()->route('User.Dashboard');
+        }
         return view('LandingPage.welcome');
     }
 
@@ -46,7 +49,7 @@ class landingPageController extends Controller
             $productShare->save();
         }
 
-        $products = AdminProductModel::where('product_level',auth()->user()->level)->paginate(9);
+        $products = AdminProductModel::where('product_level', auth()->user()->level)->paginate(9);
         return view('LandingPage.product', compact('products', 'referal'));
     }
 }

@@ -17,6 +17,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
+        if (auth()->user()) {
+            return redirect()->route('User.Dashboard');
+        }
         return view('auth.login');
     }
 
@@ -29,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('User.Dashboard')->with('success','Welcome to user dashboard');
+        return redirect()->route('User.Dashboard')->with('success', 'Welcome to user dashboard');
     }
 
     /**
@@ -43,6 +46,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success','Logout Successfully');
+        return redirect('/')->with('success', 'Logout Successfully');
     }
 }
