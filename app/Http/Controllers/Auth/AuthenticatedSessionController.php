@@ -18,7 +18,7 @@ class AuthenticatedSessionController extends Controller
     public function create(): View
     {
         if (auth()->user()) {
-            return redirect()->route('User.Dashboard');
+            return redirect()->route('User.Dashboard')->with('success', 'You are already Login');
         }
         return view('auth.login');
     }
