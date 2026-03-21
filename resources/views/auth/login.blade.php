@@ -24,7 +24,7 @@
                 <div class="card bg-transparent border-light shadow-lg w-100">
                     <div class="card-body">
                         <x-alert />
-                        <form action="{{ route('login') }}" method="POST">
+                        <form action="{{ route('login.post') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label style="color:white"><b style="font-size: 25px">Email</b></label>
