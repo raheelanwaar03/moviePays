@@ -13,8 +13,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.png') }}">
     {{-- style --}}
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
-    <script src="https://kit.fontawesome.com/fb965b455a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
     <title>{{ env('APP_NAME') }}</title>
     <script src="https://www.youtube.com/iframe_api"></script>
 
