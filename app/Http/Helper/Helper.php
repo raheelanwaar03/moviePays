@@ -105,7 +105,7 @@ function totalGivenWidthraw()
     $totalApproved = 0;
     $approvedBalance = WidthrawBalance::where('status', 'approved')->get();
     foreach ($approvedBalance as $widthraw) {
-        if (is_numeric($widthraw_amount)) {
+        if (is_numeric($widthraw)) {
             $totalApproved += $widthraw->widthraw_amount;
         } else {
             $totalApproved = 0; // or handle error
