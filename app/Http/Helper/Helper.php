@@ -71,7 +71,7 @@ function userApprovedBalance()
 
 function totalReferal()
 {
-    $totalRefers = User::where('referal', auth()->user()->email)->where('status','approved')->get();
+    $totalRefers = User::where('referal', auth()->user()->email)->where('status', 'approved')->get();
     $totalRefers = $totalRefers->count();
     return $totalRefers;
 }
@@ -79,7 +79,7 @@ function totalReferal()
 
 function level()
 {
-    $users = User::where('referal', auth()->user()->email)->where('status','approved')->get();
+    $users = User::where('referal', auth()->user()->email)->where('status', 'approved')->get();
     $userRefer = $users->count();
     return $userRefer;
 }
@@ -105,7 +105,12 @@ function totalGivenWidthraw()
     $totalApproved = 0;
     $approvedBalance = WidthrawBalance::where('status', 'approved')->get();
     foreach ($approvedBalance as $widthraw) {
-        $totalApproved += $widthraw->widthraw_amount;
+        if (is_numeric($widthraw_amount)) {
+            $totalApproved += $widthraw->widthraw_amount;
+        } else {
+            $totalApproved = 0; // or handle error
+        }
+
     }
 
     return $totalApproved;
@@ -124,10 +129,9 @@ function pkr_balance()
     $setting = Setting::where('status', '1')->first();
     $dollar_rate = $setting->dollar_rate;
 
-    $user = User::where('id',auth()->user()->id)->first();
+    $user = User::where('id', auth()->user()->id)->first();
     $balance = $user->balance;
 
     $converted_balance = $dollar_rate * $balance;
     return $converted_balance;
-
 }
