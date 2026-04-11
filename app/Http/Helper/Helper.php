@@ -110,7 +110,6 @@ function totalGivenWidthraw()
         } else {
             $totalApproved = 0; // or handle error
         }
-
     }
 
     return $totalApproved;
@@ -134,4 +133,22 @@ function pkr_balance()
 
     $converted_balance = $dollar_rate * $balance;
     return $converted_balance;
+}
+
+
+function approved_team()
+{
+    $team = User::where('referral', auth()->user()->email)->where('status', 'approved')->get()->count();
+    return $team;
+}
+
+function total_withdraw()
+{
+    $withdraw = WidthrawBalance::where('user_id', auth()->user()->id)->get();
+    $total_withdraw = 0;
+    foreach ($withdraw as $item) {
+        $total_withdraw += $item->amount;
+    }
+
+    return $total_withdraw;
 }

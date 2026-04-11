@@ -42,19 +42,19 @@
             <div class="col-xl-12">
                 <div class="card bg-transparent border-light shadow-lg w-100">
                     <div class="card-title">
-                        <h2 class="text-center text-white my-3">Widthraw Balance</h2>
+                        <h2 class="text-center text-white my-3">Withdraw Balance</h2>
                         <h2 class="text-center text-white my-3">Current Earning: {{ auth()->user()->balance }}$</h2>
                         <h2 class="text-center text-white my-3">Today Dollar Rate: {{ dollar_rate() }}</h2>
-                        <h3 class="text-center text-white my-3">Availiable for widthraw in Pkr: {{ pkr_balance() }}</h3>
+                        <h3 class="text-center text-white my-3">Availiable for withdraw in Pkr: {{ pkr_balance() }}</h3>
                     </div>
                     <div class="card-body">
                         <x-alert/>
                         <form action="{{ route('User.Widthraw.Balance.Request') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label class="mt-3" style="color:white;font-size:20px">Widthraw Amount</label>
+                                <label class="mt-3" style="color:white;font-size:20px">Withdraw Amount</label>
                                 <input type="num" name="widthraw_amount" class="form-control"
-                                    placeholder="Enter Amount You want to widthraw" required>
+                                    placeholder="Enter Amount You want to withdraw" required>
                             </div>
                             <div class="form-group">
                                 <label class="mt-3" style="color:white;font-size:20px">Account Holder Name</label>
