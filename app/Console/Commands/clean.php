@@ -56,6 +56,7 @@ class clean extends Command
         $setting->silver = '10';
         $setting->gold = '20';
         $setting->dimond = '30';
+        $setting->special = '100';
         $setting->status = 1;
         $setting->save();
 

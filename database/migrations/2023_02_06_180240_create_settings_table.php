@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('silver');
             $table->string('gold');
             $table->string('dimond');
+            $table->string('special');
             $table->string('status')->default(0);
             $table->timestamps();
         });

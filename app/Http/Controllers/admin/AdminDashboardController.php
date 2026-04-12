@@ -101,6 +101,11 @@ class AdminDashboardController extends Controller
         $dimond = $setting->dimond;
         $dimondSecondCommission = $dimond * 15 / 100;
         $dimondThirdCommission = $dimond * 5 / 100;
+        // Getting Special Commissions
+        $special = $setting->special;
+        $specialSecondCommission = $special * 15 / 100;
+        $specialThirdCommission = $special * 5 / 100;
+
 
         $user = User::find($id);
         $user->status = 'approved';
@@ -337,6 +342,86 @@ class AdminDashboardController extends Controller
                 }
                 // Third UPliner
                 $indirectCommission2 = $dimondThirdCommission;
+                // getting third person;
+                $thirdUpliner = User::where('email', $secondUpliner->referal)->where('status', 'approved')->first();
+                if ($thirdUpliner == '') {
+                    return redirect()->back()->with('massage', 'Account has beed Approved successfully');
+                } else {
+                    $thirdUpliner->balance += $indirectCommission2;
+                    $thirdUpliner->save();
+                };
+            }
+        }
+
+        if ($userPlan == 'special') {
+            $firstUpliner = User::where('email', $user->referal)->where('status', 'approved')->first();
+            if ($firstUpliner == '') {
+                return redirect()->back()->with('massage', 'Account has beed Approved successfully');
+            } else {
+                $firstUpliner->balance += $special;
+                // giving upliner his level
+                $mainUser = User::where('referal', $firstUpliner->email)->where('status', 'approved')->get();
+                $referCount = $mainUser->count();
+
+                if ($mainUser != '') {
+                    if ($referCount <= 4) {
+                        $firstUpliner->level = 'Level 0';
+                        $firstUpliner->save();
+                    }
+                    if ($referCount >= $level1) {
+                        $firstUpliner->level = 'Level 1';
+                        $firstUpliner->save();
+                    }
+                    if ($referCount >= $level2) {
+                        $firstUpliner->level = 'Level 2';
+                        $firstUpliner->save();
+                    }
+                    if ($referCount >= $level3) {
+                        $firstUpliner->level = 'Level 3';
+                        $firstUpliner->save();
+                    }
+                    if ($referCount >= $level4) {
+                        $firstUpliner->level = 'Level 4';
+                        $firstUpliner->save();
+                    }
+                    if ($referCount >= $level5) {
+                        $firstUpliner->level = 'Level 5';
+                        $firstUpliner->save();
+                    }
+                    if ($referCount >= $level6) {
+                        $firstUpliner->level = 'Level 6';
+                        $firstUpliner->save();
+                    }
+                    if ($referCount >= $level7) {
+                        $firstUpliner->level = 'Level 7';
+                        $firstUpliner->save();
+                    }
+                    if ($referCount >= $level8) {
+                        $firstUpliner->level = 'Level 8';
+                        $firstUpliner->save();
+                    }
+                    if ($referCount >= $level9) {
+                        $firstUpliner->level = 'Level 9';
+                        $firstUpliner->save();
+                    }
+                    if ($referCount >= $level10) {
+                        $firstUpliner->level = 'Level 10';
+                        $firstUpliner->save();
+                    }
+                }
+
+                //  Second Upliner
+                $indirectCommission1 = $specialSecondCommission;
+                // getting user
+                $secondUpliner = User::where('email', $firstUpliner->referal)->where('status', 'approved')->first();
+                if ($secondUpliner == '') {
+                    return redirect()->back()->with('massage', 'Account has beed Approved successfully');
+                } else {
+                    $secondUpliner->balance += $indirectCommission1;
+                    $secondUpliner->save();
+                }
+                // Third UPliner
+                $indirectCommission2 = $specialThirdCommission;
                 // getting third person;
                 $thirdUpliner = User::where('email', $secondUpliner->referal)->where('status', 'approved')->first();
                 if ($thirdUpliner == '') {

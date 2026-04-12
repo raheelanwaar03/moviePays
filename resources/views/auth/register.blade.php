@@ -67,6 +67,7 @@
                                     <option value="silver">Silver: 500</option>
                                     <option value="gold">Gold: 1000</option>
                                     <option value="dimond">Dimond: 1500</option>
+                                    <option value="special">Special: 5000</option>
                                 </select>
                             </div>
                             <span>
