@@ -106,14 +106,15 @@ class AdminDashboardController extends Controller
         $specialSecondCommission = $special * 15 / 100;
         $specialThirdCommission = $special * 5 / 100;
 
-
         $user = User::find($id);
-        $user->status = 'approved';
-        $user->save();
-
         // checking user selected plan
         $userPlan = $user->plan;
         if ($userPlan == 'silver') {
+
+            $user->status = 'approved';
+            $user->balance += 100;
+            $user->save();
+
             $firstUpliner = User::where('email', $user->referal)->where('status', 'approved')->first();
             if ($firstUpliner == '') {
                 return redirect()->back()->with('massage', 'Account has beed Approved successfully');
@@ -194,6 +195,11 @@ class AdminDashboardController extends Controller
         }
 
         if ($userPlan == 'gold') {
+
+            $user->status = 'approved';
+            $user->balance += 150;
+            $user->save();
+
             $firstUpliner = User::where('email', $user->referal)->where('status', 'approved')->first();
             if ($firstUpliner == '') {
                 return redirect()->back()->with('massage', 'Account has beed Approved successfully');
@@ -274,6 +280,11 @@ class AdminDashboardController extends Controller
         }
 
         if ($userPlan == 'dimond') {
+
+            $user->status = 'approved';
+            $user->balance += 200;
+            $user->save();
+
             $firstUpliner = User::where('email', $user->referal)->where('status', 'approved')->first();
             if ($firstUpliner == '') {
                 return redirect()->back()->with('massage', 'Account has beed Approved successfully');
@@ -354,6 +365,11 @@ class AdminDashboardController extends Controller
         }
 
         if ($userPlan == 'special') {
+
+            $user->status = 'approved';
+            $user->balance += 350;
+            $user->save();
+
             $firstUpliner = User::where('email', $user->referal)->where('status', 'approved')->first();
             if ($firstUpliner == '') {
                 return redirect()->back()->with('massage', 'Account has beed Approved successfully');
