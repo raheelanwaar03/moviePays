@@ -48,7 +48,7 @@
                             <div class="text-center">
                                 <i class="fa-solid fa-money-bill-transfer" style="font-size:25px;"></i>
                             </div>
-                            <h5 class="text-decoration-none text-center">Widthraw</h5>
+                            <h5 class="text-decoration-none text-center">Withdraw</h5>
                         </div>
                     </div>
                 </a>
