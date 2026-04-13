@@ -68,6 +68,7 @@
                                                             <th>For Silver</th>
                                                             <th>For Gold</th>
                                                             <th>For Dimond</th>
+                                                            <th>For Special</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
@@ -80,6 +81,7 @@
                                                                 <td>{{ $setting->silver }}</td>
                                                                 <td>{{ $setting->gold }}</td>
                                                                 <td>{{ $setting->dimond }}</td>
+                                                                <td>{{ $setting->special }}</td>
                                                                 <td>
                                                                     <a href="{{ route('Admin.Setting.edit', $setting->id) }}"
                                                                         class="btn btn-primary">Edit</a>

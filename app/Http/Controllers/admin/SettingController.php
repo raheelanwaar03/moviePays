@@ -96,6 +96,7 @@ class SettingController extends Controller
         $setting->silver = $request->silver;
         $setting->gold = $request->gold;
         $setting->dimond = $request->dimond;
+        $setting->special = $request->special;
         $setting->save();
         return redirect()->back()->with('massage', 'Limite updated successfully');
     }

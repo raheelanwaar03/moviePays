@@ -92,6 +92,11 @@
                                                     <input type="number" name="dimond" step="0.0001"
                                                         value="{{ $setting->dimond }}" class="form-control">
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="" class="m-3">Special</label>
+                                                    <input type="number" name="special" step="0.0001"
+                                                        value="{{ $setting->special }}" class="form-control">
+                                                </div>
                                                 <button type="submit" class="btn btn-primary mt-3">Update</button>
                                             </form>
                                         </div>
