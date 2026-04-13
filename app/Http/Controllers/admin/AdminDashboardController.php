@@ -112,7 +112,7 @@ class AdminDashboardController extends Controller
         if ($userPlan == 'silver') {
 
             $user->status = 'approved';
-            $user->balance += 100;
+            $user->balance += 0.35;
             $user->save();
 
             $firstUpliner = User::where('email', $user->referal)->where('status', 'approved')->first();
@@ -197,7 +197,7 @@ class AdminDashboardController extends Controller
         if ($userPlan == 'gold') {
 
             $user->status = 'approved';
-            $user->balance += 150;
+            $user->balance += 0.53;
             $user->save();
 
             $firstUpliner = User::where('email', $user->referal)->where('status', 'approved')->first();
@@ -282,7 +282,7 @@ class AdminDashboardController extends Controller
         if ($userPlan == 'dimond') {
 
             $user->status = 'approved';
-            $user->balance += 200;
+            $user->balance += 0.72;
             $user->save();
 
             $firstUpliner = User::where('email', $user->referal)->where('status', 'approved')->first();
@@ -367,7 +367,7 @@ class AdminDashboardController extends Controller
         if ($userPlan == 'special') {
 
             $user->status = 'approved';
-            $user->balance += 350;
+            $user->balance += 1.25;
             $user->save();
 
             $firstUpliner = User::where('email', $user->referal)->where('status', 'approved')->first();
