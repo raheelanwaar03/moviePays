@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('widthraw_num');
             $table->string('widthraw_bank');
             $table->string('widthraw_amount');
+            $table->string('pre_withdraw');
+            $table->string('total_team');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

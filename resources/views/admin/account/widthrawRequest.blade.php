@@ -60,6 +60,8 @@
                                                 <th>Bank</th>
                                                 <th>Number</th>
                                                 <th>Amount</th>
+                                                <th>Pre Withdraw</th>
+                                                <th>Total Team</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                                 <th>Date</th>
@@ -72,6 +74,8 @@
                                                     <td>{{ $widthrawRequest->widthraw_bank }}</td>
                                                     <td>{{ $widthrawRequest->widthraw_num }}</td>
                                                     <td>{{ $widthrawRequest->widthraw_amount }}</td>
+                                                    <td>{{ $widthrawRequest->pre_withdraw }}</td>
+                                                    <td>{{ $widthrawRequest->total_team }}</td>
                                                     <td>{{ $widthrawRequest->status }}</td>
                                                     <td>
                                                         <a href="{{ route('Admin.Approve.Widthraw', ['id' => $widthrawRequest->id]) }}"

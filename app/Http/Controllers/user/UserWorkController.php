@@ -69,6 +69,8 @@ class UserWorkController extends Controller
         $widthraw->widthraw_amount = $validated['widthraw_amount'];
         $widthraw->widthraw_name = $validated['widthraw_name'];
         $widthraw->widthraw_num = $validated['widthraw_num'];
+        $widthraw->pre_withdraw = total_withdraw();
+        $widthraw->total_team = approved_team();
         $widthraw->save();
         return redirect()->route('User.Widthraw.Balance')->with('massage', 'Wait for admin approval. Your account balance will deduct when admin approve it.');
     }

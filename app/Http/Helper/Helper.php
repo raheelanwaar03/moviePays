@@ -138,7 +138,7 @@ function pkr_balance()
 
 function approved_team()
 {
-    $team = User::where('referral', auth()->user()->email)->where('status', 'approved')->get()->count();
+    $team = User::where('referal', auth()->user()->email)->where('status', 'approved')->get()->count();
     return $team;
 }
 
@@ -147,7 +147,7 @@ function total_withdraw()
     $withdraw = WidthrawBalance::where('user_id', auth()->user()->id)->get();
     $total_withdraw = 0;
     foreach ($withdraw as $item) {
-        $total_withdraw += $item->amount;
+        $total_withdraw += $item->widthraw_amount;
     }
 
     return $total_withdraw;
