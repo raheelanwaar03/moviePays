@@ -25,13 +25,18 @@
 
     <div class="container">
         <div class="row m-3">
-            <div class="col-sm-12 d-flex justify-content-center align-items-center">
-                <div class="col-md-12 p-3 mt-5" style="background-color: blue">
+            <div class="col-sm-12">
+                <div class="col-md-12 p-3 mt-5 d-flex justify-content-between align-items-center"
+                    style="background-color: blue">
                     <a href="{{ route('User.Dashboard') }}" class="text-center text-decoration-none">
                         <div style="float:left;">
                             <img src="{{ asset('assets/logo.png') }}" alt="" height="80px" width="80px">
                         </div>
-                        <h3 class="text-center text-white text-decoration-none">Welcome To {{ env('APP_NAME') }}</h3>
+                    </a>
+                    <h3 class="text-center text-white text-decoration-none">Welcome To {{ env('APP_NAME') }}</h3>
+                    <a href="https://whatsapp.com/channel/0029VbC7mUPDZ4Lbg0fz4W2L" target="_blank">
+                        <img src="{{ asset('assets/whatsapp.png') }}" height="80px" width="80px"
+                            alt="whatsapp Channel">
                     </a>
                 </div>
             </div>
