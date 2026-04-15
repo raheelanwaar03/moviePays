@@ -21,7 +21,7 @@
 
 <body style="background-image: url({{ asset('assets/img/bg.jpg') }});">
 
-    <x-alert/>
+    <x-alert />
 
     <div class="container">
         <div class="row m-3">
@@ -39,33 +39,33 @@
     </div>
 
     <div class="container">
-    <div class="row m-3">
-        <div class="col-sm-12 d-flex justify-content-center align-items-center">
-            <div class="col-sm-4">
-                <a href="{{ route('User.Widthraw.Balance') }}" class="text-decoration-none card_css">
-                    <div class="card" style="background-color: blue;">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <i class="fa-solid fa-money-bill-transfer" style="font-size:25px;"></i>
+        <div class="row m-3">
+            <div class="col-sm-12 d-flex justify-content-center align-items-center">
+                <div class="col-sm-4">
+                    <a href="{{ route('User.Widthraw.Balance') }}" class="text-decoration-none card_css">
+                        <div class="card" style="background-color: blue;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <i class="fa-solid fa-money-bill-transfer" style="font-size:25px;"></i>
+                                </div>
+                                <h5 class="text-decoration-none text-center">Withdraw</h5>
                             </div>
-                            <h5 class="text-decoration-none text-center">Withdraw</h5>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-4">
-                <a href="{{ route('User.Team') }}" class="text-decoration-none card_css">
-                    <div class="card" style="background-color: blue;">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <i class="fa fa-users" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="{{ route('User.Team') }}" class="text-decoration-none card_css">
+                        <div class="card" style="background-color: blue;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <h5 class="text-decoration-none text-center">Team</h5>
                             </div>
-                            <h5 class="text-decoration-none text-center">Team</h5>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-4">
+                    </a>
+                </div>
+                <div class="col-sm-4">
                     <a href="{{ route('User.Rules') }}" class="text-decoration-none card_css">
                         <div class="card" style="background-color: blue;">
                             <div class="card-body">
@@ -77,8 +77,8 @@
                         </div>
                     </a>
                 </div>
+            </div>
         </div>
-    </div>
     </div>
     <div class="container">
         <div class="row m-3">
@@ -108,7 +108,8 @@
                     </a>
                 </div>
                 <div class="col-sm-4">
-                    <a href="mailto:moviespays1@gmail.com?subject=Mail from our Website" class="text-decoration-none card_css">
+                    <a href="mailto:moviespays1@gmail.com?subject=Mail from our Website"
+                        class="text-decoration-none card_css">
                         <div class="card" style="background-color: blue;">
                             <div class="card-body">
                                 <div class="text-center">
@@ -146,27 +147,78 @@
             <div class="col-12 p-4">
                 <div class="nav d-flex justify-content-center">
                     @if (auth()->user())
-                    <div class="">
-                        <div class="mb-2">
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button class="btn btn-primary">Logout</button>
-                            </form>
+                        <div class="">
+                            <div class="mb-2">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button class="btn btn-primary">Logout</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
                     @else
-                    <ul class="nav flex-column">
-                    <li class="nav-item">
-    <a class="nav-link btn btn-primary m-3" href="{{ route('login') }}">Login</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link btn btn-primary m-1" href="{{ route('register') }}">Register</a>
-    </li>
-</ul> @endif
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-primary m-3" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-primary m-1" href="{{ route('register') }}">Register</a>
+                            </li>
+                        </ul>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
+
+    {{-- model --}}
+
+    <div class="modal fade" id="dailyModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Join Our WhatsApp Channel</h5>
+                    <button type="button" class=" btn btn-danger" data-bs-dismiss="modal">Closs</button>
+                </div>
+
+                <div class="modal-body text-center">
+                    <p>Stay updated with latest news & offers!</p>
+
+                    <!-- WhatsApp Button -->
+                    <a href="https://whatsapp.com/channel/0029VbC7mUPDZ4Lbg0fz4W2L" target="_blank"
+                        class="btn btn-success">
+                        Join WhatsApp Channel
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-    </body>
+
+
+    {{-- Scripts --}}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const modalKey = "dailyModalShownDate";
+            const today = new Date().toISOString().split('T')[0];
+
+            const lastShown = localStorage.getItem(modalKey);
+
+            if (lastShown !== today) {
+                const modal = new bootstrap.Modal(document.getElementById('dailyModal'));
+                modal.show();
+
+                // Save today's date when modal is shown
+                localStorage.setItem(modalKey, today);
+            }
+
+        });
+    </script>
+
+</body>
 
 </html>
