@@ -33,7 +33,7 @@
                             <img src="{{ asset('assets/logo.png') }}" alt="" height="80px" width="80px">
                         </div>
                     </a>
-                    <h3 class="text-center text-white text-decoration-none" style="font-size:18px">Welcome To {{ env('APP_NAME') }}</h3>
+                    <h3 class="text-center text-white text-decoration-none" style="font-size:15px">Welcome To {{ env('APP_NAME') }}</h3>
                     <a href="https://whatsapp.com/channel/0029VbC7mUPDZ4Lbg0fz4W2L" target="_blank">
                         <img src="{{ asset('assets/whatsapp.png') }}" height="80px" width="80px"
                             alt="whatsapp Channel">
