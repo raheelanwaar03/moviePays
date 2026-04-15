@@ -73,6 +73,7 @@
                                             <option value="silver">Silver</option>
                                             <option value="gold">Gold</option>
                                             <option value="dimond">Dimond</option>
+                                            <option value="special">Special</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

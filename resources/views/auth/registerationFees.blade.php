@@ -38,7 +38,7 @@
                                         <label style="color:white"><b style="font-size: 25px">Account Title</b></label>
                                         <input type="text" name="bank_username"
                                             style="background: transparent;color:white " class="form-control"
-                                            placeholder="Easypaisa Account Holder">
+                                            placeholder="Account Title">
                                     </div>
                                     <span>
                                         @error('bank_username')
@@ -52,7 +52,7 @@
                                                 Number</b></label>
                                         <input type="number" name="sender_num"
                                             style="background: transparent;color:white " class="form-control"
-                                            placeholder="Easypaisa Account Number" minlength="11" maxlength="11">
+                                            placeholder="Account Number" minlength="11" maxlength="11">
                                     </div>
                                     <span>
                                         @error('sender_num')
