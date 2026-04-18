@@ -50,7 +50,7 @@
                                     </div>
                                 @enderror
                             </span>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" id="loginBtn" class="btn btn-primary">Login</button>
                             <a href="{{ route('password.request') }}" class="btn btn-outline-primary text-white">Reset
                                 Password</a>
                         </form>
@@ -59,6 +59,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function() {
+            document.getElementById("loginBtn").disabled = true;
+        });
+    </script>
 </body>
 
 </html>
