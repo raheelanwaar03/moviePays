@@ -32,7 +32,7 @@
                                 @endforelse
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('Store/Fees/Details') }}" method="POST">
+                                <form action="{{ route('Store/Fees/Details') }}" enctype="multipart/form-data" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label style="color:white"><b style="font-size: 25px">Account Title</b></label>
@@ -68,6 +68,19 @@
                                     </div>
                                     <span>
                                         @error('tid')
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </span>
+
+                                    <div class="form-group">
+                                        <label style="color:white"><b style="font-size: 25px">Payment ScreenShot</b></label>
+                                        <input type="file" style="background: transparent;color:white" name="image"
+                                            class="form-control">
+                                    </div>
+                                    <span>
+                                        @error('image')
                                             <div class="text-danger">
                                                 {{ $message }}
                                             </div>

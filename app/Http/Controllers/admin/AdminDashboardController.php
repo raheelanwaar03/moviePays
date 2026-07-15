@@ -195,7 +195,6 @@ class AdminDashboardController extends Controller
         }
 
         if ($userPlan == 'gold') {
-
             $user->status = 'approved';
             $user->balance += 0.35;
             $user->save();

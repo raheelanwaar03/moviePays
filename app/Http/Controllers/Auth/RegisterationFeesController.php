@@ -14,8 +14,8 @@ class RegisterationFeesController extends Controller
 {
     public function registerationFees()
     {
-        $easyPaisas = EasyPaisaMangement::where('status',1)->get();
-        return view('auth.registerationFees',compact('easyPaisas'));
+        $easyPaisas = EasyPaisaMangement::where('status', 1)->get();
+        return view('auth.registerationFees', compact('easyPaisas'));
     }
 
     public function feesDetailStore(Request $request)
@@ -24,7 +24,14 @@ class RegisterationFeesController extends Controller
             'tid' => 'required',
             'bank_username' => 'required',
             'sender_num' => 'required',
+            'image' => 'required',
         ]);
+
+        // save image
+
+        $screenShot = $validated['image'];
+        $payment_SS = rand(1111111, 9999999) . '.' . $screenShot->getClientOriginalExtension();
+        $screenShot->move(public_path('image'), $payment_SS);
 
         // checking the lenght of tid
         $lenth = $request->tid;
@@ -36,9 +43,8 @@ class RegisterationFeesController extends Controller
         // checking the length of num
         $num = $request->sender_num;
         $numLength = strlen($num);
-        if($numLength <= 10)
-        {
-            return redirect()->back()->with('error','Please enter 11 charcter num');
+        if ($numLength <= 10) {
+            return redirect()->back()->with('error', 'Please enter 11 charcter num');
         }
 
         // checking uniqe Trx id.
@@ -51,9 +57,8 @@ class RegisterationFeesController extends Controller
                 return redirect()->back()->with('error', 'This tid is used before');
         }
 
-        $user = User::where('id',auth()->user()->id)->first();
-        if($user->status == 'rejected')
-        {
+        $user = User::where('id', auth()->user()->id)->first();
+        if ($user->status == 'rejected') {
             $user->status = 'pending';
             $user->save();
         }
@@ -63,14 +68,14 @@ class RegisterationFeesController extends Controller
         $feesDetails->sender_num = $validated['sender_num'];
         $feesDetails->bank_username = $validated['bank_username'];
         $feesDetails->tid = $validated['tid'];
+        $feesDetails->image = $payment_SS;
         $feesDetails->save();
         return redirect()->route('Verification.Page');
     }
 
     public function verificationPage()
     {
-        $verificationText = verificationText::where('status',1)->get();
-        return view('auth.verificationPage',compact('verificationText'));
+        $verificationText = verificationText::where('status', 1)->get();
+        return view('auth.verificationPage', compact('verificationText'));
     }
-
 }
